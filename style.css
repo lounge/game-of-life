@@ -1,0 +1,32 @@
+body {
+	text-align: center;
+}
+
+section {
+	border: 1px solid #000000;
+	float: left;
+	
+}
+
+h4 {
+	margin-right: 10px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.row {
+	display: block;
+	clear: both;
+	float: left;
+}
+
+.cell {
+	display: block;
+	width: 10px;
+	height: 10px;
+	float: left;
+}
+
+.cell.alive {
+	background-color: #000000;
+}
