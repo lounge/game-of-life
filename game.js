@@ -6,7 +6,7 @@
 	var generations = 100;
 	var size = 16;
 
-	
+
 
 	var minX = minY = 0;
 	var maxX = maxY = size-1;
@@ -23,6 +23,10 @@
 		world = $('section');
 
 		$('#start').on('click', function() {
+			generations = $('#generations').val();
+			size = $('#size').val();
+
+			// generate(false);
 			parse();
 			run();
 		});
@@ -82,7 +86,7 @@
 			var row = $(rows[y]);
 			var cells = row.find('.cell');
 
-			
+
 			for (x = 0; x < size; x++) {
 				var cell = $(cells[x]);
 				var state = cell.hasClass('alive') ? 1 : 0;
@@ -98,9 +102,9 @@
 
 
 	function run() {
-		
 
-		setTimeout(function () { 
+
+		setTimeout(function () {
 
 			var aliveCells = 0;
 
@@ -117,8 +121,8 @@
 					var isAlive = cell === 1;
 					var aliveNeighbours = 0;
 
-					for (rowNum = startPosX; rowNum <= endPosX; rowNum++) {
-					    for (colNum = startPosY; colNum <= endPosY; colNum++) {
+					for (rowNum = startPosX; rowNum < endPosX; rowNum++) {
+					    for (colNum = startPosY; colNum < endPosY; colNum++) {
 					        var neighbour = currentGen[rowNum][colNum];
 					        if (neighbour === 1) {
 					        	aliveNeighbours++;
@@ -142,11 +146,11 @@
 
 			generation++;
 			render(aliveCells, generation);
-			
+
 			if (generation < generations) {
 				run();
 			}
-		
+
 		}, 100);
 	}
 
